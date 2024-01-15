@@ -1,0 +1,1 @@
+D:\TanTrinh\_GitHub\_Learning\cicd-net-labs\net_mvc\.sonarqube\out\0

@@ -1,12 +1,25 @@
 version: "3"
 services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root # password: pass@123
+    ports:
+     - 8080:8080
+     - 50000:50000
+    container_name: jenkins
+    volumes:
+     - ./jenkins_data/var/jenkins_home:/var/jenkins_home
+     - ./jenkins_data/var/run/docker.sock:/var/run/docker.sock
+
   sonarqube:
-    image: sonarqube
+    image: sonarqube ## default user and pass: admin/admin and pass changed to pass@123
     restart: unless-stopped
     environment:
-      - SONARQUBE_JDBC_USERNAME=sonarqube
-      - SONARQUBE_JDBC_PASSWORD=sonarpass
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonarqube
+      - SONARQUBE_JDBC_USERNAME=sa
+      - SONARQUBE_JDBC_PASSWORD=pass@123
+      - SONARQUBE_JDBC_URL=jdbc:sqlserver://localhost:1433;databaseName=sonar;integratedSecurity=true
+      
     ports:
       - "9000:9000"
       - "9092:9092"
@@ -25,6 +38,28 @@ services:
     volumes:
       - sonarqube_db:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql-server
+    volumes:
+      - sql_server:/var/opt/mssql
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: 'Y'
+      MSSQL_SA_PASSWORD: pass@123
+      MSSQL_PID: Express
+      MSSQL_COLLATION: SQL_Latin1_General_CP1_CS_AS
+  agent:
+    image: jenkins/ssh-agent:jdk11
+    privileged: true
+    user: root
+    container_name: agent
+    expose:
+      - 22:22
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCTtHQaoexBuVjFf/kgISW6n1Ft1PyutODPwFo6DdYqS9iBDIOS1KFogyv/4DU2T/cV/s3Y+FVUJx47GiwQwvpWP5GzYTFYnnG11JnTAzB5Td2p5zf4hXILPQ/1ax+GpXiFYMdDzovuDNgdXvBFYnGXkgtK+cie8vlZcXo3Ae4ofWBDuyZdtKE1Zm6hYO36mq6qj5pmlXGc30MO91ghdEcEqLCz0jgvnnmPZ9p9QwGeudrlxMchSeKhbtAQV1Y0WQnL6a/gRR1oiT57vQ8b6lI5cHX697KcYq/Djx2Ib7yzjgC6u0DJaYLp88KPzLjNQKTdAiPnjvuYrVM4dZyQ8qIBcqMKvXQzl8155SmQtR3LyjfjjcSGxJvk2Bt5WBDxws99msgQlgZCiTdwNQbnbevTWG4KnmLWWogPnIXY4f/GbEQcB0ccJrre8g+Vf4Z5A156xGzbNS7j+4JT0RoYvybTCaH7d0vnxF3K8Xry+JQJj73zG4fAXQ40KEY7UOGHd1s= root@5c71708dc90d
 volumes:
   postgresql_data:
   sonarqube_bundled-plugins:
@@ -32,3 +67,5 @@ volumes:
   sonarqube_data:
   sonarqube_db:
   sonarqube_extensions:
+  sql_server:
+  jenkins_data: 

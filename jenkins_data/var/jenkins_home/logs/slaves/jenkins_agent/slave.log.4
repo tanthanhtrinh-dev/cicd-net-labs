@@ -1,0 +1,59 @@
+SSHLauncher{host='agent', port=22, credentialsId='jenkins_agent', jvmOptions='', javaPath='/usr/local/openjdk-11/bin/java', prefixStartSlaveCmd='', suffixStartSlaveCmd='', launchTimeoutSeconds=60, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
+[01/15/24 08:49:13] [SSH] Opening SSH connection to agent:22.
+[01/15/24 08:49:13] [SSH] WARNING: SSH Host Keys are not being verified. Man-in-the-middle attacks may be possible against this connection.
+[01/15/24 08:49:13] [SSH] Authentication successful.
+[01/15/24 08:49:13] [SSH] The remote user's environment is:
+AGENT_WORKDIR=/home/jenkins/agent
+BASH=/usr/bin/bash
+BASHOPTS=checkwinsize:cmdhist:complete_fullquote:extquote:force_fignore:globasciiranges:globskipdots:hostcomplete:interactive_comments:patsub_replacement:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=([0]="0")
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_EXECUTION_STRING=set
+BASH_LINENO=()
+BASH_LOADABLES_PATH=/usr/local/lib/bash:/usr/lib/bash:/opt/local/lib/bash:/usr/pkg/lib/bash:/opt/pkg/lib/bash:.
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="5" [1]="2" [2]="15" [3]="1" [4]="release" [5]="x86_64-pc-linux-gnu")
+BASH_VERSION='5.2.15(1)-release'
+DIRSTACK=()
+EUID=1000
+GROUPS=()
+HOME=/home/jenkins
+HOSTNAME=dec47dda1655
+HOSTTYPE=x86_64
+IFS=$' \t\n'
+JAVA_HOME=/opt/java/openjdk
+JENKINS_AGENT_HOME=/home/jenkins
+JENKINS_AGENT_SSH_PUBKEY='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCTtHQaoexBuVjFf/kgISW6n1Ft1PyutODPwFo6DdYqS9iBDIOS1KFogyv/4DU2T/cV/s3Y+FVUJx47GiwQwvpWP5GzYTFYnnG11JnTAzB5Td2p5zf4hXILPQ/1ax+GpXiFYMdDzovuDNgdXvBFYnGXkgtK+cie8vlZcXo3Ae4ofWBDuyZdtKE1Zm6hYO36mq6qj5pmlXGc30MO91ghdEcEqLCz0jgvnnmPZ9p9QwGeudrlxMchSeKhbtAQV1Y0WQnL6a/gRR1oiT57vQ8b6lI5cHX697KcYq/Djx2Ib7yzjgC6u0DJaYLp88KPzLjNQKTdAiPnjvuYrVM4dZyQ8qIBcqMKvXQzl8155SmQtR3LyjfjjcSGxJvk2Bt5WBDxws99msgQlgZCiTdwNQbnbevTWG4KnmLWWogPnIXY4f/GbEQcB0ccJrre8g+Vf4Z5A156xGzbNS7j+4JT0RoYvybTCaH7d0vnxF3K8Xry+JQJj73zG4fAXQ40KEY7UOGHd1s= root@5c71708dc90d'
+LC_ALL=C.UTF-8
+LOGNAME=jenkins
+MACHTYPE=x86_64-pc-linux-gnu
+MOTD_SHOWN=pam
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PIPESTATUS=([0]="0")
+PPID=53
+PS4='+ '
+PWD=/home/jenkins
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:hashall:interactive-comments
+SHLVL=1
+SSH_CLIENT='172.23.0.6 60866 22'
+SSH_CONNECTION='172.23.0.6 60866 172.23.0.2 22'
+TERM=dumb
+UID=1000
+USER=jenkins
+_=']'
+[01/15/24 08:49:13] [SSH] Starting sftp client.
+[01/15/24 08:49:13] [SSH] Copying latest remoting.jar...
+Source agent hash is 1436044423E30A173FE7DEAC03D760E2. Installed agent hash is 1436044423E30A173FE7DEAC03D760E2
+Verified agent jar. No update is necessary.
+Expanded the channel window size to 4MB
+[01/15/24 08:49:14] [SSH] Starting agent process: cd "/home/jenkins/agent" && /usr/local/openjdk-11/bin/java  -jar remoting.jar -workDir /home/jenkins/agent -jar-cache /home/jenkins/agent/remoting/jarCache
+bash: line 1: /usr/local/openjdk-11/bin/java: No such file or directory
+Agent JVM has terminated. Exit code=127
+[01/15/24 08:49:14] Launch failed - cleaning up connection
+[01/15/24 08:49:14] [SSH] Connection closed.
